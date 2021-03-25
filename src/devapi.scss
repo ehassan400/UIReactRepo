@@ -1,0 +1,32 @@
+@import '/node_modules/hearsay-design-system/lib/mixins/mixins.scss';
+@import '/node_modules/hearsay-design-system/lib/tokens/tokens.scss';
+@import '/node_modules/hearsay-design-system/lib/components/components.scss';
+
+table {
+    @include hds-table;
+
+    strong {
+        color: $hds-color-error-medium;
+    }
+
+}
+
+.tokensGrid {
+    padding: $hds-spacing-lg;
+    position: relative;
+}
+
+.tokenicons {
+   display: inline-block;
+   vertical-align: top;
+   padding-top: 10px;
+}
+
+.colToken {
+    width: 40%;
+}
+
+.tokenName{
+    width: 90%;
+    display: inline-block;
+}
