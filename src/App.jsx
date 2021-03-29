@@ -68,6 +68,12 @@ function App() {
 
           </Heading>
           <span>Manage the API tokens that are used for the Hearsay Systems API. API documentation can be found at <a target="_blank" href="http://docs.hearsaysocial.com">docs.hearsaysocial.com</a>.</span>
+          <Button
+            theme={Button.CONSTANTS.BUTTON_THEME.SECONDARY}
+            onClick={() => setShowModal(true)}
+            size={Button.CONSTANTS.BUTTON_SIZE.SM}
+            text="Genreate New Token"
+          />
         </caption>
         <colgroup>
           <col />
