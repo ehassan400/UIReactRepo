@@ -1,17 +1,65 @@
 import logo from './logo.svg';
 import './App.css';
 import './devapi.scss';
-import { copyToClipboard } from './utils'
 import '../node_modules/hearsay-design-system/lib/components/components.scss';
 import '../node_modules/hearsay-design-system/lib/reset/reset.scss';
 import '../node_modules/hearsay-design-system/lib/tokens/tokens.scss';
 import '../node_modules/hearsay-design-system/lib/mixins/mixins.scss';
 import { Icon } from 'hearsay-design-system';
-import { Heading, Button } from 'hearsay-design-system/';
+import { Heading, Button, Modal, TextInput, Radio } from 'hearsay-design-system/';
+import { useState } from 'react';
 
 function App() {
+  const [showModal, setShowModal] = useState(false)
   return (
     <div className="tokensGrid">
+      <Modal
+        buttonText={"Dismiss"}
+        header='Edit Token'
+        onDismiss={() => setShowModal(false)}
+        tabTrapText='To top of content'
+        visible={showModal}
+      >
+        <TextInput
+          defaultValue='CRM Integration Contacts'
+          labelText='Name'
+        />
+        <Heading
+            size={Heading.CONSTANTS.HEADING_SIZE.H5}>
+            <span>Workspace Scope</span>
+
+        </Heading>
+        <Radio
+            labelText="Full Organization"
+            name="full_org"
+        />
+        <Radio
+            labelText="Single Workspace"
+            name="single_workspace"
+        />
+        <TextInput
+          defaultValue='Enter Workspace ID'
+          labelText='Workspace'
+        />
+        <Button
+                theme={Button.CONSTANTS.BUTTON_THEME.DESTRUCTIVE}
+                onClick={() => setShowModal(false)}
+                size={Button.CONSTANTS.BUTTON_SIZE.SM}
+                text="Deavtivate"
+              />
+        <Button
+                theme={Button.CONSTANTS.BUTTON_THEME.SECONDARY}
+                onClick={() => setShowModal(false)}
+                size={Button.CONSTANTS.BUTTON_SIZE.SM}
+                text="Cancel"
+              />
+        <Button
+                theme={Button.CONSTANTS.BUTTON_THEME.PRIMARY}
+                onClick={() => setShowModal(false)}
+                size={Button.CONSTANTS.BUTTON_SIZE.SM}
+                text="Save"
+              />
+      </Modal>
       <table>
         <caption>
           <Heading
@@ -58,7 +106,7 @@ function App() {
             <td>
               <Button
                 theme={Button.CONSTANTS.BUTTON_THEME.SECONDARY}
-                onClick={() => copyToClipboard('@include hds-table;')}
+                onClick={() => setShowModal(true)}
                 size={Button.CONSTANTS.BUTTON_SIZE.SM}
                 text="Edit"
               />
@@ -84,7 +132,7 @@ function App() {
             <td>
               <Button
                 theme={Button.CONSTANTS.BUTTON_THEME.SECONDARY}
-                onClick={() => copyToClipboard('@include hds-table;')}
+                onClick={() => setShowModal(true)}
                 size={Button.CONSTANTS.BUTTON_SIZE.SM}
                 text="Edit"
               />
